@@ -10,12 +10,15 @@ public class playerScript : MonoBehaviour
 
     public float jumpForce = 150.0f;
     public Rigidbody2D rb;
+    public Animator anim;
 
     public InputActionReference movement, jump;
 
     public int lives = 100;
+    
 
     private float moveX;
+    private float moveY;
     void Start()
     {
         
@@ -34,6 +37,10 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         moveX = movement.action.ReadValue<float>();
+        moveY = jump.action.ReadValue<float>();
+
+        anim.SetFloat("Up", Mathf.Abs(moveY));
+        
     }
 
     void FixedUpdate()
@@ -44,6 +51,7 @@ public class playerScript : MonoBehaviour
     void performJump(InputAction.CallbackContext context)
     {
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
