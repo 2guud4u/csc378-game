@@ -20,6 +20,8 @@ public class playerScript : MonoBehaviour
 
     private float moveX;
     private float moveY;
+
+    private bool facingLeft = true;
     void Start()
     {
         
@@ -41,7 +43,16 @@ public class playerScript : MonoBehaviour
         moveY = jump.action.ReadValue<float>();
 
         anim.SetFloat("Up", Mathf.Abs(moveY));
-        
+
+        if (moveX > 0 && !facingLeft) 
+        {
+            Flip();
+        }
+
+        else if (moveX < 0 && facingLeft)
+        {
+            Flip();
+        }
     }
 
     void FixedUpdate()
@@ -53,6 +64,16 @@ public class playerScript : MonoBehaviour
     {
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
+    }
+
+    void Flip() 
+    {
+        facingLeft = !facingLeft;
+        
+        //flip scaling on the x axis 
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     void OnTriggerEnter2D(Collider2D other)
