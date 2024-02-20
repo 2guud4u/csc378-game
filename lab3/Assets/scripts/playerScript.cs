@@ -15,7 +15,8 @@ public class playerScript : MonoBehaviour
     public InputActionReference movement, jump;
 
     public AudioSource cookieSound;
-    public int lives = 100;
+    public AudioSource damagedSound;
+    public int lives = 10;
     
 
     private float moveX;
@@ -89,6 +90,7 @@ public class playerScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "enemy"){
             lives -= 1;
+            damagedSound.Play();
             GeneralUI.instance.updateLives(lives);
             if(lives <= 0){
                 Destroy(gameObject);
