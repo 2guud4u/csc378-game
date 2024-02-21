@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class hutScript : MonoBehaviour
 {
@@ -19,8 +21,8 @@ public class hutScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other) {
 
         if(other.gameObject.tag == "grandma"){
-            Debug.Log("WIN");
             yay.PlayOneShot(yay.clip);
+            SceneManager.LoadScene(3);
         }
     }
 }
