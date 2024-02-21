@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerScript : MonoBehaviour
 {
@@ -67,6 +68,10 @@ public class playerScript : MonoBehaviour
 
     }
 
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Flip() 
     {
         facingLeft = !facingLeft;
@@ -94,6 +99,7 @@ public class playerScript : MonoBehaviour
             GeneralUI.instance.updateLives(lives);
             if(lives <= 0){
                 Destroy(gameObject);
+                RestartGame();
             }
         }
     }
