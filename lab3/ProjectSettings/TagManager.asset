@@ -7,6 +7,8 @@ TagManager:
   - weapon
   - enemy
   - cookie
+  - Hut
+  - grandma
   layers:
   - Default
   - TransparentFX

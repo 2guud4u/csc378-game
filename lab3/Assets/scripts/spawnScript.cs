@@ -5,7 +5,7 @@ using UnityEngine;
 public class spawnScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float spawnRate = 10.0f;
+    [SerializeField] float spawnRate = 1.0f;
     public GameObject enemyPrefab;
     // Update is called once per frame
     private float timePast = 0;
@@ -24,13 +24,13 @@ public class spawnScript : MonoBehaviour
     }
     private void spawnEnemy(){
         int spawn = Random.Range(0, 2);
-        Debug.Log(spawn);
+        
         if(spawn == 0){
-            Vector3 spawnPos = new Vector3(30, Random.Range(-20, 23),0);
+            Vector3 spawnPos = new Vector3(-33, Random.Range(-30, 92),0);
             GameObject l = Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(0, 180, 0)); 
         }
         else{
-            Vector3 spawnPos = new Vector3(-30, Random.Range(-20, 23),0);
+            Vector3 spawnPos = new Vector3(381, Random.Range(-30, 92),0);
             GameObject l = Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(0, 0, 0)); 
         }
 
